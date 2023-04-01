@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Purchase from '../components/Purchase';
+import Purchase from '../components/Ticket/Purchase';
 // Snapshot test for Purchase page
 test('Purchase snapshot test', () => {
   const component = renderer.create(<Purchase />);

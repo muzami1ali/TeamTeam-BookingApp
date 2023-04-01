@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Login from '../components/Login';
+import Login from '../components/Home/Login';
 // Snapshot test for Login page
 test('Login snapshot test', () => {
   const component = renderer.create(<Login />);

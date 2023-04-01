@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Home from '../components/Home';
+import Home from '../components/Home/Home';
 import { render, screen } from '@testing-library/react';
 
 // Snapshot test for Home page

@@ -1,28 +1,28 @@
-import Home from "./Home";
+import Home from "./Home/Home";
 import React, { useEffect } from "react";
-import Contact from "./Contact";
-import Login from "./Login";
-import Purchase from "./Purchase";
-import About from "./About";
-import Privacy from "./Privacy";
-import Terms from "./Terms";
+import Contact from "./Static/Contact";
+import Login from "./Home/Login";
+import Purchase from "./Ticket/Purchase";
+import About from "./Static/About";
+import Privacy from "./Static/Privacy";
+import Terms from "./Static/Terms";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "./Home/Navbar";
 import EventDetails from "./Events/EventDetails";
-import Basket from "./Basket";
+import Basket from "./Ticket/Basket";
 import ViewSociety from "./Societies/ViewSociety";
 import CreateSocietyForm from "./Societies/CreateSocietyForm";
 import SearchSocieties from "./Societies/SearchSocieties";
 import EditSocietyForm from "./Societies/EditSocietyForm";
 import SearchEvents from "./Events/SearchEvents";
-import Logout from "./Logout";
+import Logout from "./Home/Logout";
 const jwtController = require("../utils/jwt.js");
 
 import CreateEvents from "./Events/CreateEvents";
 import EditEvents from "./Events/EditEvents";
 
 const sessionStorage = require("sessionstorage");
-import Footer from "./Footer";
+import Footer from "./Static/Footer";
 import { LoggedInRoutes, PrivateRoutes } from "../utils/PrivateRoutes";
 
 //Routes to connect the different pages of the application . This is the main component of the application.

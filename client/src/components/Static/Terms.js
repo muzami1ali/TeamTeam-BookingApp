@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Terms.css";
+import "../../styles/Terms.css";
 //A component for define the terms and conditions of the website
 
 function Terms() {

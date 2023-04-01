@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Privacy.css";
+import "../../styles/Privacy.css";
 //A component for providing privacy information to the user about our application.
 
 function Privacy() {

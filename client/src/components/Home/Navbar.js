@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "../styles/Navbar.css";
+import "../../styles/Navbar.css";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
-import basket from "../assets/basket.png";
-import burger from "../assets/burger.png";
+import logo from "../../assets/logo.png";
+import basket from "../../assets/basket.png";
+import burger from "../../assets/burger.png";
 
 //Create a navbar component
 

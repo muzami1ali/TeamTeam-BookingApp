@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import About from '../components/About';
+import About from '../components/Static/About';
 // Snapshot test for About page
 test('About snapshot test', () => {
   const component = renderer.create(<About />);

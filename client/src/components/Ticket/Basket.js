@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import TicketHolderTicket from "./Events/TicketHolder";
+import TicketHolderTicket from "../Events/TicketHolder";
 import PropTypes from "prop-types";
-const generateTickets = require("../utils/ticketGenerator.js");
-import "../styles/Basket.css";
-import "../styles/index.css";
+const generateTickets = require("../../utils/ticketGenerator.js");
+import "../../styles/Basket.css";
+import "../../styles/index.css";
 import { Link } from "react-router-dom";
 
 // This component is the basket page. It displays the tickets in the basket and allows the user to checkout.

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Purchase.css";
-const jwtController = require("../utils/jwt.js");
+import "../../styles/Purchase.css";
+const jwtController = require("../../utils/jwt.js");
 import { QRCodeSVG } from "qrcode.react";
 
 // A component for the purchase page which displays the tickets that the user has purchased and allows them to be downloaded as a QR code.

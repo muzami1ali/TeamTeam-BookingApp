@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import "../styles/index.css";
+import "../../styles/index.css";
 
 // This is a functional component that renders a form for contacting a society
 function ContactForm(props) {
