@@ -1,7 +1,13 @@
 import React from "react";
 
+interface ListFilterProps {
+  categories: string[];
+  selectedCategory: string;
+  onCategorySelect: (category: string) => void;
+}
+
 // This is a functional component that renders a list of categories 
-const ListFilter = ({ categories, selectedCategory, onCategorySelect }) => {
+const ListFilter = ({ categories, selectedCategory, onCategorySelect }: ListFilterProps) => {
   return (
     <ul className="list-group">
       {categories.map((category) => (

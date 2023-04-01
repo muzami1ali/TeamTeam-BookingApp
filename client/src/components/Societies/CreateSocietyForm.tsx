@@ -108,7 +108,7 @@ function CreateSocietyForm() {
               onChange={formik.handleChange}
               className="form-select"
             >
-              <option defaultValue>Other</option>
+              <option>Other</option>
               <option>Academic</option>
               <option>Social</option>
               <option>Sports</option>
@@ -272,11 +272,10 @@ function CreateSocietyForm() {
               name="description"
               value={formik.values.description}
               onChange={formik.handleChange}
-              type="text"
               className="form-control"
               onBlur={formik.handleBlur}
-              rows="8"
-              cols="173"
+              rows={8}
+              cols={173}
               style={{ marginBottom: "8px" }}
             ></textarea>
             {formik.touched.description && formik.errors.description ? (

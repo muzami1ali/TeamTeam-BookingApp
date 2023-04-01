@@ -25,6 +25,31 @@ const sessionStorage = require("sessionstorage");
 import Footer from "./Static/Footer";
 import { LoggedInRoutes, PrivateRoutes } from "../utils/PrivateRoutes";
 
+interface Event{
+  id: number;
+  name: string;
+  date: string;
+  description: string;
+  location: string;
+  isArchived: boolean;
+  banner: string;
+  societyId: number;
+}
+
+interface EventObject{
+  event: Event;
+  isCommittee: boolean;
+}
+
+interface TicketType{
+  eventId: number;
+  id: number;
+  isArchived: boolean;
+  price: number;
+  quantity: number;
+  ticketType: string;
+}
+
 //Routes to connect the different pages of the application . This is the main component of the application.
 
 function App() {
@@ -33,7 +58,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   useEffect(() => {
-    jwtController.checkIsLoggedIn().then((res) => {
+    jwtController.checkIsLoggedIn().then((res:any) => {
       setIsLoggedIn(res);
     });
   }, []);
@@ -69,7 +94,7 @@ function App() {
     }
   };
   // Sets the event in the basket
-  const setBasketEvent = (basketEvent) => {
+  const setBasketEvent = (basketEvent:Event) => {
     sessionStorage.setItem("basketEvent", JSON.stringify(basketEvent));
   };
   // Gets the ticket types for the event in the basket
@@ -95,7 +120,7 @@ function App() {
     }
   };
   // Sets the tickets in the basket
-  const setTickets = (tickets) => {
+  const setTickets = (tickets:any) => {
     sessionStorage.setItem("tickets", JSON.stringify(tickets));
   };
 
@@ -108,7 +133,7 @@ function App() {
 
     var tickets = getTickets();
 
-    getTicketTypes().map((type) => {
+    getTicketTypes().map((type:any) => {
       if (tickets[type.id] === undefined || tickets[type.id] === 0) {
       } else {
         total += tickets[type.id] * type.price;
@@ -123,11 +148,12 @@ function App() {
   };
 
   // Adds a ticket to the basket
-  const addTicket = (callData, ticketType) => {
+  const addTicket = (callData:EventObject, ticketType:TicketType) => {
     var event = callData.event;
     console.log(callData);
+    console.log(ticketType);
 
-    if (!getBasketInUse() || getTickets() === {}) {
+    if (!getBasketInUse() || getTickets().length === 0) {
       setBasketInUse();
       setBasketEvent(event);
       setTickets({ [ticketType.id]: 1 });
@@ -148,7 +174,7 @@ function App() {
   };
 
   // Removes a ticket from the basket
-  const removeTicket = (callData, ticketType) => {
+  const removeTicket = (callData:EventObject, ticketType:TicketType) => {
     var event = callData.event;
 
     if (!getBasketInUse()) {
@@ -188,12 +214,12 @@ function App() {
           <Route element={<LoggedInRoutes />}>
             <Route
               path="/login"
-              element={<Login isLoggedIn={isLoggedIn} />}
+              element={<Login/>}
             ></Route>
           </Route>
           <Route
             path="/logout"
-            element={<Logout isLoggedIn={isLoggedIn} />}
+            element={<Logout/>}
           ></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/about" element={<About />}></Route>

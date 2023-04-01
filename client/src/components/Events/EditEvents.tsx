@@ -13,7 +13,7 @@ function EditEvents() {
       <h1>Edit Event</h1>
       <Formik
         initialValues={{
-          eventId: parseInt(useParams().id),
+          eventId: parseInt(useParams().id!),
           eventName: "",
           description: "",
           date: "",
@@ -118,10 +118,9 @@ function EditEvents() {
                 name="description"
                 value={formikProps.values.description}
                 onChange={formikProps.handleChange}
-                type="text"
                 onBlur={formikProps.handleBlur}
-                rows="8"
-                cols="173"
+                rows={8}
+                cols={173}
               ></textarea>
               {formikProps.touched.description &&
               formikProps.errors.description ? (

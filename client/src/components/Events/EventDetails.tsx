@@ -7,24 +7,80 @@ import TicketHolderTicket from "./TicketHolder";
 import PropTypes from "prop-types";
 import "../../styles/index.css";
 
+interface Event{
+  event: {
+  id: number;
+  name: string;
+  description: string;
+  date: string;
+  location: string;
+  banner: string;
+  societyId: number;
+  isArchived: boolean;
+  ticketTypes: TicketType[];
+  society: Society;
+  };
+  isCommittee: boolean;
+}
+
+interface TicketType{
+  id: number;
+  ticketType: string;
+  price: number;
+  quantity: number;
+  eventId: number;
+  isArchived: boolean;
+}
+
+interface Society{
+  id: number;
+  name: string;
+  email: string;
+  description: string;
+  category: string;
+  isArchived: boolean;
+  links: SocietyLink[];
+}
+
+interface SocietyLink{
+  id: number;
+  instagram: string;
+  facebook: string;
+  twitter: string;
+  website: string;
+  logo: string;
+  banner: string;
+  societyId: number;
+}
+
+interface Props{
+  addTicket: any;
+  removeTicket: any;
+  tickets: any;
+}
+
 // This component is used to display the details of an event. It is used in the Events component.
-class EventDetails extends Component {
-  constructor(props) {
+class EventDetails extends Component<Props> {
+  state: {
+    data: Event | null;
+  };
+
+  constructor(props:any) {
     super(props);
-    this.state = { data: null, tickets: null };
+    this.state = { data: null};
     this.fetchData();
   }
 
   async fetchData() {
     const searchParams = new URLSearchParams(window.location.search);
-    const eventId = parseInt(searchParams.get("eventId"));
+    const eventId = parseInt(searchParams.get("eventId")!);
     const event = await getEventById(eventId);
     this.setState({ data: event });
   }
 
   handleClick = () => {
     const searchParams = new URLSearchParams(window.location.search);
-    const eventId = parseInt(searchParams.get("eventId"));
+    const eventId = parseInt(searchParams.get("eventId")!);
     window.location.href = "/edit-event/" + eventId;
   };
 
@@ -72,7 +128,6 @@ class EventDetails extends Component {
           </div>
           <div className="societyInfo">
             <div className="icon">
-              {console.log(event)}
               <div
                 className="logo"
                 style={{
@@ -116,11 +171,11 @@ class EventDetails extends Component {
           {new Date() <= new Date(event.event.date) && (
             <div className="tickerHolder">
               <h2>Tickets</h2>
-              {console.log(new Date() <= event.event.date)}
+              {/* {console.log(new Date() <= event.event.date)} */}
               {event.event.ticketTypes.map((ticketType) => {
                 return (
                   <TicketHolderTicket
-                    extraChanges={(a) => {
+                    extraChanges={(a:any) => {
                       a;
                     }}
                     key={ticketType.id}
@@ -137,7 +192,7 @@ class EventDetails extends Component {
                 className="button"
                 style={{ marginTop: "25px" }}
                 onClick={() => {
-                  window.location = "/basket";
+                  window.location.href = "/basket";
                 }}
               >
                 Go To Basket
@@ -152,10 +207,10 @@ class EventDetails extends Component {
   }
 }
 
-EventDetails.propTypes = {
-  addTicket: PropTypes.func,
-  tickets: PropTypes.func,
-  removeTicket: PropTypes.func,
-};
+// EventDetails.propTypes = {
+//   addTicket: PropTypes.func,
+//   tickets: PropTypes.func,
+//   removeTicket: PropTypes.func,
+// };
 
 export default EventDetails;

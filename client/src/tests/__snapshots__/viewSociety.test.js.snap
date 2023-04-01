@@ -15,7 +15,7 @@ exports[`ViewSociety snapshot test 1`] = `
       className="image"
       style={
         Object {
-          "backgroundImage": "url(undefined)",
+          "backgroundImage": "url()",
         }
       }
     >
@@ -33,7 +33,7 @@ exports[`ViewSociety snapshot test 1`] = `
           className="logo"
           style={
             Object {
-              "backgroundImage": "url(undefined)",
+              "backgroundImage": "url()",
             }
           }
         />
@@ -51,6 +51,7 @@ exports[`ViewSociety snapshot test 1`] = `
       >
         <a
           className="socialCircle"
+          href=""
         >
           <svg
             aria-hidden="true"
@@ -76,6 +77,7 @@ exports[`ViewSociety snapshot test 1`] = `
         </a>
         <a
           className="socialCircle"
+          href=""
         >
           <svg
             aria-hidden="true"
@@ -101,6 +103,7 @@ exports[`ViewSociety snapshot test 1`] = `
         </a>
         <a
           className="socialCircle"
+          href=""
         >
           <svg
             aria-hidden="true"
@@ -147,7 +150,9 @@ exports[`ViewSociety snapshot test 1`] = `
          
         0
       </p>
-      <a />
+      <a
+        href=""
+      />
       <div />
     </div>
     <div
@@ -231,18 +236,17 @@ exports[`ViewSociety snapshot test 1`] = `
         </label>
         <textarea
           className="form-control"
-          cols="173"
+          cols={173}
           id="message"
           name="message"
           onBlur={[Function]}
           onChange={[Function]}
-          rows="8"
+          rows={8}
           style={
             Object {
               "marginBottom": "8px",
             }
           }
-          type="text"
           value=""
         />
       </div>

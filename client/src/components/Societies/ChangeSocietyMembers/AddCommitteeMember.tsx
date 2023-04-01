@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import "../../../styles/index.css";
 
 // This is a functional component that renders a form to add a member to a society
-const AddCommitteeMember = (props) => {
+const AddCommitteeMember = (props:any) => {
   const [value, setValue] = React.useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event:any) => {
     event.preventDefault();
     props.addMember(value);
     setValue("");

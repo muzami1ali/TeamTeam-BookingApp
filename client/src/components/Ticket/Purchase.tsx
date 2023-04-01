@@ -2,9 +2,44 @@ import React, { useState, useEffect } from "react";
 import "../../styles/Purchase.css";
 const jwtController = require("../../utils/jwt.js");
 import { QRCodeSVG } from "qrcode.react";
+import { any } from "cypress/types/bluebird";
 
 // A component for the purchase page which displays the tickets that the user has purchased and allows them to be downloaded as a QR code.
 // The user can also view the tickets that they have purchased in the future.
+interface Purchase{
+  id: string;
+  date: string;
+  total: number;
+  paymentMethod: string;
+  status: string;
+  userId: number;
+  eventId: number;
+  isArchived: boolean;
+  tickets: Ticket[];
+  event: Event;
+}
+
+interface Ticket{
+  id: number;
+  ticketData: string;
+  status: string;
+  userId: number;
+  eventId: number;
+  ticketTypeId: number;
+  purchaseId: number;
+  isArchived: boolean;
+}
+
+interface Event{
+  id: number;
+  name: string;
+  date: string;
+  description: string;
+  location: string;
+  isArchived: boolean;
+  banner: string;
+  societyId: number;
+}
 
 const FutureTickets = () => {
   const [futureTickets, setFutureTickets] = useState([]);
@@ -24,7 +59,7 @@ const FutureTickets = () => {
       .then((response) => response.json())
       .then((data) => {
         const sortedTickets = data.futureTickets.sort(
-          (a, b) => new Date(a.event.date) - new Date(b.event.date)
+          (a:Purchase, b:Purchase) => new Date(a.event.date).getTime() - new Date(b.event.date).getTime()
         );
         setFutureTickets(sortedTickets);
       });
@@ -43,7 +78,7 @@ const FutureTickets = () => {
       .then((response) => response.json())
       .then((data) => {
         const sortedTickets = data.pastTickets.sort(
-          (a, b) => new Date(a.event.date) - new Date(b.event.date)
+          (a:Purchase, b:Purchase) => new Date(a.event.date).getTime() - new Date(b.event.date).getTime()
         );
         setPastTickets(sortedTickets);
       });
@@ -69,7 +104,7 @@ const FutureTickets = () => {
         </thead>
         <tbody>
           {pastTickets.length !== 0 &&
-            pastTickets.map((ticket) => (
+            pastTickets.map((ticket:Purchase) => (
               <tr data-testid={ticket.id} key={ticket.id}>
                 <td>
                   <a href={"/event-details?eventId=" + ticket.event.id}>
@@ -101,7 +136,7 @@ const FutureTickets = () => {
         </thead>
         <tbody>
           {futureTickets.length !== 0 &&
-            futureTickets.map((ticket) => (
+            futureTickets.map((ticket:Purchase) => (
               <tr data-testid={ticket.id} key={ticket.id}>
                 <td>
                   <a href={"/event-details?eventId=" + ticket.event.id}>

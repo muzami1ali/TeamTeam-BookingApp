@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "../../styles/Navbar.css";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
@@ -7,9 +8,9 @@ import burger from "../../assets/burger.png";
 
 //Create a navbar component
 
-function Navbar(props) {
+function Navbar(props:any) {
   const [notMenuClass, setNotMenuClass] = useState("menu");
-  const [menuActive, setMenuActive] = useState("");
+  const [menuActive, setMenuActive] = useState<Boolean>();
   const [menuClass, setMenuClass] = useState("");
 
   const toggleMenu = () => {
@@ -190,4 +191,9 @@ function Navbar(props) {
     </div>
   );
 }
+
+Navbar.propTypes = {
+  isLoggedIn: PropTypes.bool,
+};
+
 export default Navbar;

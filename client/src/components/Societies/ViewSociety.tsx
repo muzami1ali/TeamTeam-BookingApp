@@ -13,11 +13,64 @@ import { Link } from "react-router-dom";
 import "../../styles/index.css";
 const jwtController = require("../../utils/jwt.js");
 
+interface EventObject{
+  id: number;
+  name: string;
+  description: string;
+  date: string;
+  location: string;
+  banner: string;
+  societyId: number;
+  isArchived: boolean;
+  society: Society;
+}
+
+interface Society{
+  id: number;
+  name: string;
+  email: string;
+  description: string;
+  category: string;
+  isArchived: boolean;
+}
+
+interface SocietyLink{
+  instagram: string;
+  facebook: string;
+  twitter: string;
+  website: string;
+  logo: string;
+  banner: string;
+}
+
+interface SocietyObject{
+  id: number;
+  name: string;
+  email: string;
+  description: string;
+  category: string;
+  isCommitteePresident: boolean;
+}
+
 // A component for the view society page which allows the user to view the details of a society.
 function ViewSociety() {
-  const [society, setSociety] = useState({});
+  const [society, setSociety] = useState<SocietyObject>({
+    id: 0,
+    name: "",
+    email: "",
+    description: "",
+    category: "",
+    isCommitteePresident: false,
+  });
   const [followersCount, setFollowersCount] = useState(0);
-  const [societyLinks, setSocietyLinks] = useState({});
+  const [societyLinks, setSocietyLinks] = useState<SocietyLink>({
+    instagram: "",
+    facebook: "",
+    twitter: "",
+    website: "",
+    logo: "",
+    banner: "",
+  });
   const [events, setEvents] = useState([]);
   const { id: societyId } = useParams();
 
@@ -27,7 +80,7 @@ function ViewSociety() {
   const [showEditButton, setShowEditButton] = useState(true);
 
   const data = {
-    societyId: parseInt(societyId),
+    societyId: parseInt(societyId!),
   };
 
   useEffect(() => {
@@ -56,7 +109,7 @@ function ViewSociety() {
           "Content-Type": "application/json",
           Authorization: "Bearer " + jwtController.getToken(),
         },
-        body: JSON.stringify({ societyId: parseInt(societyId) }),
+        body: JSON.stringify({ societyId: parseInt(societyId!) }),
       })
         .then((response) => response.json())
         .then((data) => {
@@ -83,7 +136,7 @@ function ViewSociety() {
           "Content-Type": "application/json",
           Authorization: "Bearer " + jwtController.getToken(),
         },
-        body: JSON.stringify({ societyId: parseInt(societyId) }),
+        body: JSON.stringify({ societyId: parseInt(societyId!) }),
       }).then((res) => {
         res.json().then((data) => {
           if (data.isMember === true) {
@@ -121,11 +174,11 @@ function ViewSociety() {
     }
   }, [societyId]);
 
-  function societyEventClick(eventId) {
+  function societyEventClick(eventId: number) {
     window.location.href = "/event-details?eventId=" + eventId;
   }
   //Render the events for the particular society
-  function eventsCardList(events) {
+  function eventsCardList(events:EventObject[]) {
     return (
       <div className="events" data-testid="events-list">
         {events.map((event) => (
@@ -135,7 +188,7 @@ function ViewSociety() {
             key={event.id}
             onClick={() => societyEventClick(event.id)}
           >
-            <Event details={event.id} specificEvent={event} />
+            <Event specificEvent={event} />
           </div>
         ))}
       </div>

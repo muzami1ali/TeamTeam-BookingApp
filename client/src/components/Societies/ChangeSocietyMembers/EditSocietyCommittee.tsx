@@ -4,16 +4,21 @@ import AddCommitteeMember from "./AddCommitteeMember";
 import axios from "axios";
 const jwtController = require("../../../utils/jwt.js");
 
+interface Member{
+  userId: number;
+  email: string;
+}
+
 // A component for the edit society page which allows the president to edit the committee members of a society.
-const EditSocietyCommittee = (props) => {
-  const [members, setMembers] = useState([]);
+const EditSocietyCommittee = (props:any) => {
+  const [members, setMembers] = useState<Member[]>([]);
 
   // Fetches the committee members from the database
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5001/societies/getCommitteeMembers",
+          process.env.REACT_APP_API_URL + "/societies/getCommitteeMembers",
           {
             societyId: props.societyId,
           }
@@ -31,9 +36,9 @@ const EditSocietyCommittee = (props) => {
   }, [members]);
 
   // Removes a committee member from the database
-  const handleRemoveMember = async (userId) => {
+  const handleRemoveMember = async (userId:any) => {
     const data = { userId: userId, societyId: props.societyId };
-    await fetch("http://localhost:5001/societies/removeCommitteeMember", {
+    await fetch(process.env.REACT_APP_API_URL + "/societies/removeCommitteeMember", {
       method: "POST",
       mode: "cors",
       headers: {
@@ -60,7 +65,7 @@ const EditSocietyCommittee = (props) => {
   };
 
   // Adds a committee member to the database
-  const handleAddMember = async (email) => {
+  const handleAddMember = async (email:string) => {
     const data = {
       email: email,
       societyId: parseInt(props.societyId),
@@ -69,7 +74,7 @@ const EditSocietyCommittee = (props) => {
 
     var resUserId = 0;
 
-    await fetch("http://localhost:5001/societies/addCommitteeMember", {
+    await fetch(process.env.REACT_APP_API_URL + "/societies/addCommitteeMember", {
       method: "POST",
       mode: "cors",
       headers: {
@@ -102,13 +107,13 @@ const EditSocietyCommittee = (props) => {
   };
 
   // Changes the president of the society
-  const handleMakePresident = async (userId) => {
+  const handleMakePresident = async (userId:any) => {
     const data = {
       societyId: parseInt(props.societyId),
       userId: parseInt(userId),
     };
 
-    await fetch("http://localhost:5001/societies/changePresident", {
+    await fetch(process.env.REACT_APP_API_URL + "/societies/changePresident", {
       method: "POST",
       mode: "cors",
       headers: {
@@ -152,7 +157,7 @@ const EditSocietyCommittee = (props) => {
       >
         Committee Members
       </h1>
-      {members.map((member) => (
+      {members.map((member: Member) => (
         <Member
           email={member.email}
           userId={member.userId}

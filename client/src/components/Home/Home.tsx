@@ -4,12 +4,38 @@ import Event from '../Events/Event';
 import '../../styles/Home.css';
 import {getEvents} from "../../utils/EventsLogic"
 
+interface Society {
+    id: number;
+    name: string;
+    email: string;
+    description: string;
+    category: string;
+    isArchived: boolean;
+  }
+  
+  interface EventObject {
+    id: number;
+    name: string;
+    description: string;
+    date: string;
+    location: string;
+    banner: string;
+    societyId: number;
+    isArchived: boolean;
+    society: Society;
+  }
  
 
 // This is used for fetching events from the database and displaying them on the home page. This component is used in the App component.
 
 class Home extends Component {
-    constructor(props) {
+    state: {
+        eventCardList: JSX.Element[],
+        data: EventObject[],
+        query: string,
+    };
+
+    constructor(props: any) {
         super(props);
         this.state = {eventCardList: [], data: [],  query: ""}
         this.handleChange = this.handleChange.bind(this);
@@ -19,7 +45,7 @@ class Home extends Component {
         this.fetchData();
     }
 
-    handleChange(event) {
+    handleChange(event:any) {
         this.setState({ query: event.target.value });
     }
     
@@ -53,12 +79,12 @@ class Home extends Component {
 
     }
     // Displaying the events on the home page
-    eventsCardList(events) {
+    eventsCardList(events: EventObject[]) {
         return (
             <div className="events" data-testid="events-list">
                 {events.map(event => (
                     <div className="eventCard" key={event.id} onClick={()=>this.handleClick(event.id)} >
-                    <Event details={event.id} specificEvent = {event}/>
+                    <Event specificEvent = {event}/>
                     </div>
                 ))}
             </div>
@@ -78,11 +104,11 @@ class Home extends Component {
         )
     }
     // When an event is clicked, the user is redirected to that event's details page
-    handleClick= (eventId) => {
+    handleClick= (eventId: number) => {
         window.location.href = '/event-details?eventId=' + eventId;
     }
 
-    newSearch = (eventName) => {
+    newSearch = (eventName: string) => {
         window.location.href = '/search-events?name=' + eventName;
     }
 }

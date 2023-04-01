@@ -7,7 +7,11 @@ import "../../styles/Home.css"
 // This component is used to display the events based on the search query.
 
 class SearchEvents extends React.Component {
-  constructor(props) {
+  state: {
+    query: string;
+    results: any[];
+  };
+  constructor(props:any) {
     super(props);
     this.state = {
       query: "",
@@ -17,7 +21,7 @@ class SearchEvents extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange(event:any) {
     this.setState({ query: event.target.value });
   }
 
@@ -29,7 +33,7 @@ class SearchEvents extends React.Component {
     this.setState({results: events})
   }
 
-getEventsByName  = async (eventName) => {
+getEventsByName  = async (eventName:string) => {
     if(eventName === ""){
       return [];
     }
@@ -46,11 +50,11 @@ getEventsByName  = async (eventName) => {
   }
 
 
-  handleClick= (eventId) => {
+  handleClick= (eventId:number) => {
     window.location.href = '/event-details?eventId=' + eventId;
 }
 
- newSearch = (eventName) => {
+ newSearch = (eventName:string) => {
     window.location.href = '/search-events?name=' + eventName;
   }
 
@@ -73,7 +77,7 @@ getEventsByName  = async (eventName) => {
             <div className="events" data-testid="events-list">
               {this.state.results.map(event => (    
                   <div className="eventCard" key={event.id} onClick={()=>this.handleClick(event.id)} >
-                  <Event details={event.id} specificEvent = {event}/>
+                  <Event specificEvent = {event}/>
                   </div>
               ))}
             </div>

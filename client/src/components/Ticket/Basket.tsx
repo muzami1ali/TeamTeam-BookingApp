@@ -6,8 +6,17 @@ import "../../styles/Basket.css";
 import "../../styles/index.css";
 import { Link } from "react-router-dom";
 
+interface TicketType{
+  eventId: number;
+  id: number;
+  isArchived: boolean;
+  price: number;
+  quantity: number;
+  ticketType: string;
+}
+
 // This component is the basket page. It displays the tickets in the basket and allows the user to checkout.
-function Basket(props) {
+function Basket(props:any) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [emActive, setEmActive] = useState("active");
   const [baActive, setBaActive] = useState("");
@@ -30,7 +39,7 @@ function Basket(props) {
 
   async function checkout() {
     if (!props.isLoggedIn) {
-      window.location = "/login";
+      window.location.href = "/login";
     }
 
     const res = await generateTickets.generateTickets(
@@ -42,7 +51,7 @@ function Basket(props) {
 
     if (res) {
       props.emptyBasket();
-      window.location = "/tickets";
+      window.location.href = "/tickets";
     } else {
     }
   }
@@ -64,7 +73,7 @@ function Basket(props) {
           <div className="left">
             <div className="event"></div>
             <ol className="basket">
-              {props.availableTicketTypes.map((ticketType) => {
+              {props.availableTicketTypes.map((ticketType: TicketType) => {
                 return (
                   <TicketHolderTicket
                     extraChanges={updateBasketTotal}
@@ -94,7 +103,7 @@ function Basket(props) {
                 You Need To Be Signed In{" "}
                 <button
                   onClick={() => {
-                    window.location = "/login";
+                    window.location.href = "/login";
                   }}
                 >
                   Log In
@@ -129,5 +138,6 @@ Basket.propTypes = {
   removeTicket: PropTypes.func,
   addTicket: PropTypes.func,
   emptyBasket: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
 };
 export default Basket;

@@ -5,7 +5,28 @@ const jwtController = require("../../utils/jwt.js");
 
 // Create a login component that prints the input email and password to the console
 class Login extends Component {
-  constructor(props) {
+  state: {
+    loginEmail: string;
+    loginPassword: string;
+
+    signupName: string;
+    signupEmail: string;
+    signupPassword: string;
+    signupConfirmPassword: string;
+
+    forgotEmail: string;
+    resetPassword: string;
+    resetConfirmPassword: string;
+
+    disableLoginForm: boolean;
+    disableSignUp: boolean;
+    disableForgotPassword: boolean;
+    disablePopUpMessage: boolean;
+    disableResetPassword: boolean;
+    popUpMessage: string;
+  };
+
+  constructor(props: any) {
     super(props);
     this.state = {
       loginEmail: "",
@@ -32,14 +53,14 @@ class Login extends Component {
   }
 
   // Update the state of variable associated with a field
-  handleChange = (event) => {
+  handleChange = (event:any) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
 
   // Submit login to backend to receive token for use
-  handleSubmitLogin = (event) => {
+  handleSubmitLogin = (event:any) => {
     if (this.state.loginEmail === "" || this.state.loginPassword === "") {
       console.log("Empty Fields");
       this.showMessage("You have left a field empty");
@@ -51,22 +72,22 @@ class Login extends Component {
         email: this.state.loginEmail,
         password: this.state.loginPassword,
       })
-      .then((response) => {
+      .then((response:any) => {
         if (response.data.token) {
           jwtController.setToken(response.data.token);
-          window.location = "/";
+          window.location.href = "/";
         } else {
           this.showMessage("Error: " + response.data.message);
         }
       })
-      .catch((error) => {
+      .catch((error:any) => {
         console.log(error.message);
         this.showMessage("Local Client Error: " + error.message);
       });
   };
 
   // Submit signup to backend to receive successful sign up
-  handleSubmitSignUp = (event) => {
+  handleSubmitSignUp = (event:any) => {
     if (this.state.signupConfirmPassword !== this.state.signupPassword) {
       console.log("Passwords Do Not Match");
       this.showMessage("Passwords Do Not Match");
@@ -82,10 +103,10 @@ class Login extends Component {
         email: this.state.signupEmail,
         password: this.state.signupPassword,
       })
-      .then((response) => {
+      .then((response: any) => {
         this.showMessage("Signed Up. Check Email for Verification.");
       })
-      .catch((error) => {
+      .catch((error:any) => {
         console.log(error);
         this.showMessage("Error: " + error.message);
         this.signupToggle();
@@ -93,24 +114,24 @@ class Login extends Component {
   };
 
   // Submit forgot password to backend to receive successful forgot password email
-  handleSubmitForgot = (event) => {
+  handleSubmitForgot = (event:any) => {
     event.preventDefault();
 
     axios
       .post(process.env.REACT_APP_API_URL + "/user/forgotPassword", {
         email: this.state.forgotEmail,
       })
-      .then((response) => {
+      .then((response:any) => {
         this.showMessage("Forgot Password Email Sent If Email Account Exists.");
       })
-      .catch((error) => {
+      .catch((error:any) => {
         console.log(error.message);
         this.showMessage("Local Client Error: " + error.message);
       });
   };
 
   // Submit a new password to be set
-  handleSubmitResetPassword = (event) => {
+  handleSubmitResetPassword = (event:any) => {
     if (this.state.resetConfirmPassword !== this.state.resetPassword) {
       console.log("Passwords Do Not Match");
       this.showMessage("Passwords Do Not Match");
@@ -129,10 +150,10 @@ class Login extends Component {
         userId: parseInt(params.get("userId")),
         new_password: this.state.resetPassword,
       })
-      .then((response) => {
+      .then((response:any) => {
         this.showMessage("Password Reset");
       })
-      .catch((error) => {
+      .catch((error:any) => {
         console.log(error.message);
         this.showMessage("Local Client Error: " + error.message);
       });
@@ -163,7 +184,7 @@ class Login extends Component {
   };
 
   // Open the Message Overlay
-  showMessage = (message) => {
+  showMessage = (message:any) => {
     this.setState({
       disablePopUpMessage: false,
       popUpMessage: message,
@@ -181,17 +202,17 @@ class Login extends Component {
     });
   };
 
-  loginNewUser = (param) => {
+  loginNewUser = (param:any) => {
     axios
       .post(process.env.REACT_APP_API_URL + "/user/verify", {
         verificationCode: param.get("verify"),
         verificationType: param.get("type"),
         userId: parseInt(param.get("userId")),
       })
-      .then((res) => {
+      .then((res: any) => {
         this.showMessage("Verified! Use Your Credentials To Log In!");
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log(err);
         this.showMessage("Error: " + err);
       });
@@ -229,7 +250,9 @@ class Login extends Component {
         <div
           className="container"
           id="LoginForm"
-          disabled={this.state.disableLoginForm}
+          style={{
+            display: this.state.disableLoginForm ? "none" : "block",
+          }}
         >
           <h1>Log In</h1>
           <div className="field" style={{ height: "0.9em" }}>
@@ -254,7 +277,7 @@ class Login extends Component {
             <input
               type="password"
               name="loginPassword"
-              minLength="8"
+              minLength={8}
               onChange={this.handleChange}
               required
             />
@@ -285,7 +308,9 @@ class Login extends Component {
         <div
           className="container"
           id="SignUpForm"
-          disabled={this.state.disableSignUp}
+          style={{
+            display: this.state.disableSignUp ? "none" : "block",
+          }}
         >
           <h1>Sign Up</h1>
           <div className="field" style={{ height: "0.9em" }}>
@@ -300,7 +325,7 @@ class Login extends Component {
             <input
               type="text"
               name="signupName"
-              minLength="3"
+              minLength={3}
               onChange={this.handleChange}
               required
             />
@@ -321,7 +346,7 @@ class Login extends Component {
             <input
               type="password"
               name="signupPassword"
-              minLength="8"
+              minLength={8}
               onChange={this.handleChange}
               required
             />
@@ -348,7 +373,9 @@ class Login extends Component {
         <div
           className="container"
           id="forgotForm"
-          disabled={this.state.disableForgotPassword}
+          style={{
+            display: this.state.disableForgotPassword ? "none" : "block",
+          }}
         >
           <h1>Forgot Password</h1>
           <div className="field">
@@ -387,7 +414,9 @@ class Login extends Component {
         <div
           className="container"
           id="resetPasswordForm"
-          disabled={this.state.disableResetPassword}
+          style={{
+            display: this.state.disableResetPassword ? "none" : "block",
+          }}
         >
           <h1>Reset Password</h1>
           <div className="field">
@@ -396,7 +425,7 @@ class Login extends Component {
             <input
               type="password"
               name="resetPassword"
-              minLength="8"
+              minLength={8}
               onChange={this.handleChange}
               required
             />
@@ -420,7 +449,11 @@ class Login extends Component {
           </button>
         </div>
 
-        <div className="overlay" disabled={this.state.disablePopUpMessage}>
+        <div className="overlay" 
+          style={{
+            display: this.state.disablePopUpMessage ? "none" : "block",
+          }}
+          >
           <div className="container" id="popupForm">
             <div className="field">
               <label style={{ textAlign: "center" }}>

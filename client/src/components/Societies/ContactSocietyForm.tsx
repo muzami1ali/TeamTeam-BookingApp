@@ -5,8 +5,8 @@ import * as Yup from "yup";
 import "../../styles/index.css";
 
 // This is a functional component that renders a form for contacting a society
-function ContactSocietyForm(props) {
-  const form = useRef();
+function ContactSocietyForm(props:any) {
+  const form = useRef<HTMLFormElement>(null);
 
   const formik = useFormik({
     initialValues: {
@@ -132,11 +132,10 @@ function ContactSocietyForm(props) {
             name="message"
             value={formik.values.message}
             onChange={formik.handleChange}
-            type="text"
             className="form-control"
             onBlur={formik.handleBlur}
-            rows="8"
-            cols="173"
+            rows={8}
+            cols={173}
             style={{ marginBottom: "8px" }}
           ></textarea>
           {formik.touched.message && formik.errors.message ? (

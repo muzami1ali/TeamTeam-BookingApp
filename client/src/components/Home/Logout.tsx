@@ -9,12 +9,12 @@ function Logout() {
     const headerText = "You Aren't Logged In";
 
     useEffect(() => {
-        jwtController.checkIsLoggedIn().then((res) => {
+        jwtController.checkIsLoggedIn().then((res: any) => {
             res ? console.log('Logged In!') : console.log('Not Logged In!');
             if (res) {
                 /* LOGOUT */
                 jwtController.removeToken();
-                window.location = '/';
+                window.location.href = '/';
             }
         });
     }, []);

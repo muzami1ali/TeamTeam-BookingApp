@@ -38,7 +38,7 @@ function CreateEvents() {
             .trim()
             .min(3, "Event location must be at least 3 characters.")
             .required("Event location is required"),
-          societyId: Yup.number("Society ID must be a number")
+          societyId: Yup.number()
             .positive("Society ID must be positive")
             .required("Society ID is required"),
           time: Yup.string().required("Event time is required"),
@@ -48,10 +48,10 @@ function CreateEvents() {
                 .trim()
                 .min(3, "Ticket name must be at least 3 characters.")
                 .required("Ticket name is required"),
-              price: Yup.number("Price must be a number")
+              price: Yup.number()
                 .positive("Price must be positive")
                 .required("Ticket price is required"),
-              quantity: Yup.number("Quantity must be a number")
+              quantity: Yup.number()
                 .positive("Ticket quantity must be positive")
                 .required("Ticket quantity is required"),
             })
@@ -122,10 +122,9 @@ function CreateEvents() {
                 name="description"
                 value={formikProps.values.description}
                 onChange={formikProps.handleChange}
-                type="text"
                 onBlur={formikProps.handleBlur}
-                rows="8"
-                cols="173"
+                rows={8}
+                cols={173}
               ></textarea>
               {formikProps.touched.description &&
               formikProps.errors.description ? (
@@ -237,7 +236,7 @@ function CreateEvents() {
                       data-testid={`ticketInfo.${index}.name`}
                     >
                       <Field name={`ticketInfo.${index}.name`}>
-                        {(fieldProps) => (
+                        {(fieldProps:any) => (
                           <div className="field">
                             <label>Ticket Type Name</label>
                             <input
@@ -257,7 +256,7 @@ function CreateEvents() {
                       </Field>
 
                       <Field name={`ticketInfo.${index}.price`}>
-                        {(fieldProps) => (
+                        {(fieldProps:any) => (
                           <div className="field">
                             <label>Ticket Price</label>
                             <input
@@ -277,7 +276,7 @@ function CreateEvents() {
                       </Field>
 
                       <Field name={`ticketInfo.${index}.quantity`}>
-                        {(fieldProps) => (
+                        {(fieldProps:any) => (
                           <div className="field">
                             <label>Ticket Quantity Available</label>
                             <input

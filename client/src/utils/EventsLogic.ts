@@ -2,9 +2,30 @@
 
 const jwtController = require('./jwt.js');
 
+interface Society {
+  id: number;
+  name: string;
+  email: string;
+  description: string;
+  category: string;
+  isArchived: boolean;
+}
+
+interface Event {
+  id: number;
+  name: string;
+  description: string;
+  date: string;
+  location: string;
+  banner: string;
+  societyId: number;
+  isArchived: boolean;
+  society: Society;
+}
+
 // This function gets all events from the backend 
 export const getEvents = async () => {
-  var events = [];
+  var events: Event[] = [];
   await fetch(process.env.REACT_APP_API_URL + '/events', {
     method: 'GET',
     mode: 'cors',
@@ -23,7 +44,7 @@ export const getEvents = async () => {
 }
 
 // This function gets a specific event from the backend
-export const getEventById = async (eventId) => {
+export const getEventById = async (eventId: number) => {
   var event = {};
   if(jwtController.getToken() != null){
     await fetch(process.env.REACT_APP_API_URL + '/events/', {

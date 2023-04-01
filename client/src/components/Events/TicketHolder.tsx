@@ -2,9 +2,28 @@ import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import '../../styles/Events.css';
 
+interface Props{
+  ticketType: {
+    id: number;
+    ticketType: string;
+    price: number;
+    quantity: number;
+    eventId: number;
+    isArchived: boolean;
+  };
+  event: any;
+  addTicket: any;
+  removeTicket: any;
+  tickets: any;
+  extraChanges: any;
+}
+
 // This component is used to display tickets for an event. It is used in the Events component.
-class TicketHolderTicket extends Component{
-    constructor(props){
+class TicketHolderTicket extends Component<Props>{
+    state: {
+        tickets: any;
+    };
+    constructor(props:any){
         super(props);
         this.state = {tickets: this.props.tickets()}
     }
@@ -36,11 +55,11 @@ class TicketHolderTicket extends Component{
     }
 }
 
-TicketHolderTicket.propTypes = {
-  addTicket: PropTypes.func,
-  tickets: PropTypes.func,
-  removeTicket: PropTypes.func,
-  extraChanges: PropTypes.func,
-  event: PropTypes.object
-};
+// TicketHolderTicket.propTypes = {
+//   addTicket: PropTypes.func,
+//   tickets: PropTypes.func,
+//   removeTicket: PropTypes.func,
+//   extraChanges: PropTypes.func,
+//   event: PropTypes.object
+// };
 export default TicketHolderTicket;

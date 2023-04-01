@@ -2,7 +2,7 @@ import React from "react";
 import "../../../styles/index.css";
 
 // This is a functional component that renders a member of a society
-const Member = (props) => {
+const Member = (props:any) => {
   return (
     <div
       style={{

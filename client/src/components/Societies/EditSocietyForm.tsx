@@ -11,7 +11,7 @@ const jwtController = require("../../utils/jwt.js");
 function EditSocietyForm() {
   const formik = useFormik({
     initialValues: {
-      societyId: parseInt(useParams().id),
+      societyId: parseInt(useParams().id!),
       societyName: "",
       category: "",
       societyEmail: "",
@@ -57,7 +57,7 @@ function EditSocietyForm() {
         alert("Please fill in at least one field");
       } else {
         const data = {
-          societyId: parseInt(values.societyId),
+          societyId: values.societyId,
           name: values.societyName,
           category: values.category,
           email: values.societyEmail,
@@ -72,7 +72,7 @@ function EditSocietyForm() {
           },
         };
 
-        fetch("http://localhost:5001/societies/updateSociety", {
+        fetch(process.env.REACT_APP_API_URL + "/societies/updateSociety", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -129,7 +129,7 @@ function EditSocietyForm() {
               onChange={formik.handleChange}
               className="form-select"
             >
-              <option defaultValue></option>
+              <option></option>
               <option>Academic</option>
               <option>Social</option>
               <option>Sports</option>
@@ -294,11 +294,10 @@ function EditSocietyForm() {
               name="description"
               value={formik.values.description}
               onChange={formik.handleChange}
-              type="text"
               className="form-control"
               onBlur={formik.handleBlur}
-              rows="8"
-              cols="173"
+              rows={8}
+              cols={173}
               style={{ marginBottom: "8px" }}
             ></textarea>
             {formik.touched.description && formik.errors.description ? (

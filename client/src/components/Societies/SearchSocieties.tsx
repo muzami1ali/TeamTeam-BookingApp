@@ -6,10 +6,18 @@ import { Link } from "react-router-dom";
 import ListFilter from "../common/ListFilter";
 import axios from "axios";
 import "../../styles/index.css";
+import { number } from "yup";
 
 // This is a class component that renders a list of societies
 class SearchSocieties extends Component {
-  constructor(props) {
+  state: {
+    societiesList: any[];
+    currentPage: number;
+    pageSize: number;
+    selectedCategory: any;
+    searchQuery: string;
+  };
+  constructor(props:any) {
     super(props);
     this.state = {
       societiesList: [],
@@ -27,11 +35,11 @@ class SearchSocieties extends Component {
     this.setState({ societiesList });
   }
 
-  handlePageChange = (page) => {
+  handlePageChange = (page:number) => {
     this.setState({ currentPage: page });
   };
 
-  handleSearch = (query) => {
+  handleSearch = (query:string) => {
     this.setState({
       searchQuery: query,
       currentPage: 1,
@@ -39,7 +47,7 @@ class SearchSocieties extends Component {
     });
   };
 
-  handleCategorySelect = (category) => {
+  handleCategorySelect = (category:any) => {
     this.setState({
       selectedCategory: category,
       currentPage: 1,
