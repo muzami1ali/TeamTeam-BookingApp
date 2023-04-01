@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Terms from '../components/Terms';
+import Terms from '../components/Static/Terms';
 // Snapshot test for Terms page
 test('Terms snapshot test', () => {
   const component = renderer.create(<Terms />);

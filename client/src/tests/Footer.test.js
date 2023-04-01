@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Footer from '../components/Footer';
+import Footer from '../components/Static/Footer';
 import { BrowserRouter } from 'react-router-dom';
 // Snapshot test for Footer
 test('Footer snapshot test', () => {

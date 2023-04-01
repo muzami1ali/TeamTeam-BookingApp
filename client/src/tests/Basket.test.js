@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Basket from '../components/Basket';
+import Basket from '../components/Ticket/Basket';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 import { Router } from 'react-router-dom';

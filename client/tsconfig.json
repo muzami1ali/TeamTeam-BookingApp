@@ -1,0 +1,30 @@
+// {
+//   "compilerOptions": {
+//     "target": "es5",
+//     "module": "commonjs",
+//     "lib": ["es2015", "dom"],
+//     // "outDir": "../dist/client",
+//     "rootDir": "./src",
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "noImplicitReturns": true,
+//     "noFallthroughCasesInSwitch": true,
+//     "noUnusedLocals": true,
+//     "noUnusedParameters": true,
+//     "noImplicitAny": true,
+//     "noImplicitThis": true,
+//     "noEmit": true,
+//     "moduleResolution": "node",
+//     "allowSyntheticDefaultImports": true,
+//     "resolveJsonModule": true,
+//     "baseUrl": "./src",
+//     "paths": {
+//       "@/*": ["*"]
+//     }
+//   },
+// }
+{
+  "extends": "@tsconfig/create-react-app/tsconfig.json"
+}

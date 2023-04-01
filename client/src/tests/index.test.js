@@ -10,7 +10,7 @@ test('index test', () => {
     unmount: jest.fn(),
   }));
 
-  require('../index.js');
+  require('../index.tsx');
 
   expect(ReactDOM.createRoot).toHaveBeenCalledWith(div);
 });

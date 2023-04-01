@@ -46,9 +46,7 @@ exports[`CreateSocietyForm snapshot test 1`] = `
           onChange={[Function]}
           value="Other"
         >
-          <option
-            defaultValue={true}
-          >
+          <option>
             Other
           </option>
           <option>
@@ -203,18 +201,17 @@ exports[`CreateSocietyForm snapshot test 1`] = `
         </label>
         <textarea
           className="form-control"
-          cols="173"
+          cols={173}
           id="description"
           name="description"
           onBlur={[Function]}
           onChange={[Function]}
-          rows="8"
+          rows={8}
           style={
             Object {
               "marginBottom": "8px",
             }
           }
-          type="text"
           value=""
         />
       </div>

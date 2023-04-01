@@ -79,8 +79,7 @@ exports[`Contact snapshot test 1`] = `
           name="message"
           onBlur={[Function]}
           onChange={[Function]}
-          rows="8"
-          type="text"
+          rows={8}
           value=""
         />
       </div>

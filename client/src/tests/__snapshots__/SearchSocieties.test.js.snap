@@ -18,7 +18,7 @@ exports[`SearchSocieties snapshot test 1`] = `
     >
       <input
         className="searchBar"
-        minLength="1"
+        minLength={1}
         name="query"
         onChange={[Function]}
         placeholder="Search for society..."

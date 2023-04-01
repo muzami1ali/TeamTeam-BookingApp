@@ -49,6 +49,7 @@ async function mail(
     qrYes = false,
     qrcodes,
 ) {
+  return;
   try{
   const qrattachments = [];
   // If do this it passes
