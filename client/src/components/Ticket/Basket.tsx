@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TicketHolderTicket from "../Events/TicketHolder";
 import PropTypes from "prop-types";
-const generateTickets = require("../../utils/ticketGenerator.js");
+const generateTickets = require("../../utils/ticketGenerator.ts");
 import "../../styles/Basket.css";
 import "../../styles/index.css";
 import { Link } from "react-router-dom";

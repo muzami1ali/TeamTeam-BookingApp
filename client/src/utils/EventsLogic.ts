@@ -1,6 +1,6 @@
 // This file contains functions that make API calls to the backend 
 
-const jwtController = require('./jwt.js');
+const jwtController = require('./jwt.ts');
 
 interface Society {
   id: number;

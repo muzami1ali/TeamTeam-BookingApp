@@ -16,7 +16,7 @@ import SearchSocieties from "./Societies/SearchSocieties";
 import EditSocietyForm from "./Societies/EditSocietyForm";
 import SearchEvents from "./Events/SearchEvents";
 import Logout from "./Home/Logout";
-const jwtController = require("../utils/jwt.js");
+const jwtController = require("../utils/jwt.ts");
 
 import CreateEvents from "./Events/CreateEvents";
 import EditEvents from "./Events/EditEvents";

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/Purchase.css";
-const jwtController = require("../../utils/jwt.js");
+const jwtController = require("../../utils/jwt.ts");
 import { QRCodeSVG } from "qrcode.react";
 import { any } from "cypress/types/bluebird";
 

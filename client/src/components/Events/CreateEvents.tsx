@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, FieldArray, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-const jwtController = require("../../utils/jwt.js");
+const jwtController = require("../../utils/jwt.ts");
 import "../../styles/CreateEvents.css";
 import "../../styles/index.css";
 

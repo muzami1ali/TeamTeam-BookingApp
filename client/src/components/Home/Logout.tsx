@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import '../../styles/Logout.css';
-const jwtController = require('../../utils/jwt.js');
+const jwtController = require('../../utils/jwt.ts');
 
 
 // Create a login component that prints the input email and password to the console
