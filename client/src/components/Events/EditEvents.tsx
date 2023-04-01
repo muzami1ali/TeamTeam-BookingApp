@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useParams } from "react-router-dom";
-const jwtController = require("../../utils/jwt.js");
+const jwtController = require("../../utils/jwt.ts");
 import "../../styles/index.css";
 
 // A component for the edit event page which allows the user to edit the details of an event they have created previously.

@@ -5,7 +5,7 @@ import EditSocietyCommittee from "./ChangeSocietyMembers/EditSocietyCommittee";
 import "../../styles/Society.css";
 import { useParams } from "react-router-dom";
 import "../../styles/index.css";
-const jwtController = require("../../utils/jwt.js");
+const jwtController = require("../../utils/jwt.ts");
 
 // A component for the edit society page which allows the president to edit the details of a society they have created previously.
 function EditSocietyForm() {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Member from "./Member";
 import AddCommitteeMember from "./AddCommitteeMember";
 import axios from "axios";
-const jwtController = require("../../../utils/jwt.js");
+const jwtController = require("../../../utils/jwt.ts");
 
 interface Member{
   userId: number;

@@ -1,14 +1,14 @@
 const axios = require('axios');
-const jwt = require("./jwt.js");
+const jwt = require("./jwt.ts");
 
 // This function is used to generate tickets for a user.
 
-export const generateTickets = async (event, ticketTypes, tickets, total) => {
+export const generateTickets = async (event:any, ticketTypes:any, tickets:any, total:number) => {
 
     // Check Logged In
     var isLoggedIn = false;
 
-    await jwt.checkIsLoggedIn().then((res) => {if (res) {isLoggedIn = res;}});
+    await jwt.checkIsLoggedIn().then((res:any) => {if (res) {isLoggedIn = res;}});
 
     if (!isLoggedIn) {
         return 0;
@@ -27,9 +27,9 @@ export const generateTickets = async (event, ticketTypes, tickets, total) => {
         'Authorization': 'Bearer ' + token
       }      
 
-    var types = [];
+    var types:any[] = [];
     let ticketsObj = tickets();
-    ticketTypes.map((ticketType) => {
+    ticketTypes.map((ticketType:any) => {
         if(ticketsObj[ticketType.id] !== undefined) {
             types.push({
                 "id": ticketType.id,
@@ -60,7 +60,7 @@ export const generateTickets = async (event, ticketTypes, tickets, total) => {
             eventId: event.id
         },{
             headers: headers
-        }).catch(err => {
+        }).catch((err:any) => {
             console.log(err);
         })
 

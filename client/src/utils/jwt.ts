@@ -9,7 +9,7 @@ export const getToken = () => {
     return sessionStorage.getItem('token');
 }
 
-export const setToken = (token) => {
+export const setToken = (token:any) => {
     console.log('SET TOKEN FUNC')
     sessionStorage.setItem('token', token);
 }
@@ -35,7 +35,7 @@ export const checkIsLoggedIn = async () => {
 
     const res = await axios.post(process.env.REACT_APP_API_URL + '/user/checkUserLoggedIn', {}, {
         headers: headers
-      }).catch(err => {
+      }).catch((err:any) => {
         console.log(err);
       })
     if (res !== undefined && res.status == 200) {

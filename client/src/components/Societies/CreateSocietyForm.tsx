@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "../../styles/index.css";
-const jwtController = require("../../utils/jwt.js");
+const jwtController = require("../../utils/jwt.ts");
 
 // A component for the create society page which allows the user to create a new society.
 function CreateSocietyForm() {

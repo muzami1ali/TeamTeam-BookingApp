@@ -11,7 +11,7 @@ import {
 import ContactSocietyForm from "./ContactSocietyForm";
 import { Link } from "react-router-dom";
 import "../../styles/index.css";
-const jwtController = require("../../utils/jwt.js");
+const jwtController = require("../../utils/jwt.ts");
 
 interface EventObject{
   id: number;

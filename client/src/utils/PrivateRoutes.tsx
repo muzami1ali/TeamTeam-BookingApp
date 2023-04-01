@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
-const jwtController = require("./jwt.js");
+const jwtController = require("./jwt.ts");
 
 // A function for the private routes which prevents non logged in users from accessing pages they are not authorised to access.
 export const PrivateRoutes = () => {
