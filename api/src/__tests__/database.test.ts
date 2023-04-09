@@ -1,4 +1,4 @@
-const prisma = require('../../prisma/prisma.js');
+const prisma = require('../../prisma/prisma.ts');
 
 // I want to test the database by testing the constraints on the database
 

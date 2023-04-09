@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const eventsController = require('../controllers/events.js');
+const eventsController = require('../controllers/events.ts');
 
 // This route is used to get all events from the database.
 router.get('/', (req, res) => {

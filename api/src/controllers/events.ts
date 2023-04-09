@@ -1,6 +1,6 @@
 // EVENTS CONTROLLER
-const prisma = require('../../prisma/prisma.js');
-const auth = require('../utils/jwt_auth.js');
+const prisma = require('../../prisma/prisma.ts');
+const auth = require('../utils/jwt_auth.ts');
 
 /**
  * This function is used to get all events

@@ -1,7 +1,7 @@
 // LOGIN ROUTE
 const express = require('express');
 const router = express.Router();
-const loginController = require('../controllers/login.js');
+const loginController = require('../controllers/login.ts');
 
 // The login function from the login controller is called when a POST request
 // is made to the / login route, that function returns a response, with a JWT

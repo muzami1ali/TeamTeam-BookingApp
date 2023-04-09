@@ -1,9 +1,9 @@
 // Past events page controller for the user. 
 
-const prisma = require('../../prisma/prisma.js');
-const {mail} = require('../utils/emails.js');
-const auth = require('../utils/jwt_auth.js');
-const {randomString} = require('../utils/random.js');
+const prisma = require('../../prisma/prisma.ts');
+const {mail} = require('../utils/emails.ts');
+const auth = require('../utils/jwt_auth.ts');
+const {randomString} = require('../utils/random.ts');
 
 
 // This function is used to get the past purchases of a user

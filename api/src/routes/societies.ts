@@ -1,9 +1,9 @@
 // SOCIETIES ROUTE
 const express = require('express');
 const router = express.Router();
-const societyController = require('../controllers/societies.js');
-const committeeController = require('../controllers/committee.js');
-const memberController = require('../controllers/members.js');
+const societyController = require('../controllers/societies.ts');
+const committeeController = require('../controllers/committee.ts');
+const memberController = require('../controllers/members.ts');
 
 // This route is used to create a society
 router.post('/signup', (req, res) => {

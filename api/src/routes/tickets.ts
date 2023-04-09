@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const ticketController = require('../controllers/tickets.js');
+const ticketController = require('../controllers/tickets.ts');
 
 // GET /tickets
 router.get('/', (req, res) => {

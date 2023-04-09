@@ -1,4 +1,4 @@
-const mailer = require('../utils/emails');
+const mailer = require('../utils/emails.ts');
 
 // Testing email systems
 
