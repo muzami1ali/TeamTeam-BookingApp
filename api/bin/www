@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 
-var app = require('../src/server');
+// import app from '../src/server';
+var app = require('../src/server.ts');
 var debug = require('debug')('api:server');
 var http = require('http');
 

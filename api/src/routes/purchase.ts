@@ -3,7 +3,7 @@
 // Path: api/src/routes/past.js
 const express = require('express');
 const router = express.Router();
-const purchaseController = require('../controllers/purchase.js');
+const purchaseController = require('../controllers/purchase.ts');
 
 router.post('/', (req, res) => {
   purchaseController.getPastPurchases(req, res);

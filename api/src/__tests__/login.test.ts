@@ -1,7 +1,7 @@
 const request = require('supertest');
-const prisma = require('../../prisma/prisma.js');
-const app = require('../server.js');
-const bcrypt = require('../utils/bcrypt.js');
+const prisma = require('../../prisma/prisma.ts');
+const app = require('../server.ts');
+const bcrypt = require('../utils/bcrypt.ts');
 // const seed = require('../../prisma/seed.js')
 let token = null;
 

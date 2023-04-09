@@ -1,6 +1,6 @@
 const request = require('supertest');
-const prisma = require('../../prisma/prisma.js');
-const app = require('../server.js');
+const prisma = require('../../prisma/prisma.ts');
+const app = require('../server.ts');
 const {faker} = require('@faker-js/faker');
 
 let token = null;

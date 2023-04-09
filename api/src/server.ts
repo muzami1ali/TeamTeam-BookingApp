@@ -8,12 +8,12 @@ const swaggerUi = require('swagger-ui-express');
 const cors = require('cors');
 
 // If you are adding a new route, you need to add it here
-const indexRouter = require('./routes/index');
-const loginRouter = require('./routes/login');
-const eventsRouter = require('./routes/events');
-const societiesRouter = require('./routes/societies');
-const purchaseRouter = require('./routes/purchase');
-const ticketsRouter = require('./routes/tickets');
+const indexRouter = require('./routes/index.ts');
+const loginRouter = require('./routes/login.ts');
+const eventsRouter = require('./routes/events.ts');
+const societiesRouter = require('./routes/societies.ts');
+const purchaseRouter = require('./routes/purchase.ts');
+const ticketsRouter = require('./routes/tickets.ts');
 const swaggerDocument = require('./swagger.json');
 
 

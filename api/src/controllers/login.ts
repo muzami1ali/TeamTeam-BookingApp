@@ -1,9 +1,9 @@
 // LOGIN CONTROLLER
-const prisma = require('../../prisma/prisma.js');
-const auth = require('../utils/jwt_auth.js');
-const {randomString} = require('../utils/random.js');
-const {mail} = require('../utils/emails.js');
-const bcrypt = require('../utils/bcrypt.js');
+const prisma = require('../../prisma/prisma.ts');
+const auth = require('../utils/jwt_auth.ts');
+const {randomString} = require('../utils/random.ts');
+const {mail} = require('../utils/emails.ts');
+const bcrypt = require('../utils/bcrypt.ts');
 
 /**
  * This function is used to login a user

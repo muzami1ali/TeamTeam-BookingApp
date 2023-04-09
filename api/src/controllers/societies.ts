@@ -1,6 +1,6 @@
 // SOCIETY CONTROLLER
-const prisma = require("../../prisma/prisma.js");
-const auth = require("../utils/jwt_auth.js");
+const prisma = require("../../prisma/prisma.ts");
+const auth = require("../utils/jwt_auth.ts");
 
 /**
  *  This function is called when a user wants to create a new society.
